@@ -1,0 +1,32 @@
+<h1 class="kaay">KAAYLABS API TASK</h1>
+<nav class="navbar">
+     <input class="form-control search" type="text" name="firstName" [(ngModel)]="name" (ngModelChange)="Search()"
+     placeholder="Enter First Name to search">
+</nav>
+<table class="table table-bordered">
+  <thead class="labs">
+    <tr>
+      <th (click)="sort('id')">User id&nbsp;<i class="fa fa-sort"></i></th>
+       <th (click)="sort('name')">Name&nbsp;<i class="fa fa-sort"></i></th>
+      <th>tagline</th>
+      <th>first_drew</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+         <tr *ngFor="let user of users | orderBy: key: reverse | paginate: {itemsPerPage:10, currentPage:p};">
+             <td>{{user.id}}</td>
+             <td>{{user.name}}</td>
+             <td>{{user.tagline}}</td>
+             <td>{{user.first_brewed}}</td>
+             <td>{{user.description}}</td>
+         </tr>
+  </tbody>
+
+
+ 
+
+</table>
+<pagination-controls (pageChange) ="p = $event"></pagination-controls>
+
+
